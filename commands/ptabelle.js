@@ -5,7 +5,11 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('ptabelle')
         .setDescription('Gibt dir die Deklinationstabelle für ein bestimmtes Pronomen')
-        .addRoleOption((option) => option.setName("rolle").setDescription("Pronomenrolle").setRequired(true)),
+        .addRoleOption((option) =>
+            option
+                .setName("rolle")
+                .setDescription("Pronomenrolle")
+                .setRequired(true)),
 
     async execute(interaction) {
         let rollenname = interaction.guild.roles.cache.get(interaction.options.get('rolle').value).name;
@@ -34,14 +38,14 @@ module.exports = {
                 pronomen = ["they", "their", "them", "them"];
             } else if (rollenname.includes("die")) {
                 pronomen = ["die", "deren", "denen", "die"];
+                plural = true;
             }
         }
 
         if (existiert) {
             return interaction.reply({
-                content: ' ',
                 embeds: [
-                    new EmbedBuilder().setTitle("Rollenname").setColor("white").addFields({
+                    new EmbedBuilder().setTitle("Rollenname").setColor("White").addFields({
 
                             name: '__**Deklination**__',
                             value: `Nominativ: ${pronomen[0]}
