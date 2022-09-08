@@ -5,10 +5,10 @@ const https = require('https');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('rki')
-        .setDescription('Nennt dir die 7-Tage-Imnzidenz nach RKI')
+        .setDescription('Nennt dir die 7-Tage-Inzidenz nach RKI')
         .addStringOption((option) =>
             option
-                .setName("Landkreis")
+                .setName("landkreis")
                 .setDescription("oder kreisfreie Stadt")
                 .setRequired(true)),
 
